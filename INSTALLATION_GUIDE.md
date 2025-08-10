@@ -110,14 +110,14 @@ https://prod-auth.example.com/credentials
 **Features:**
 - Uses your system user info for secure authentication
 - Generates UUID access tokens automatically
-- Replaces `tipalti_access_token_template` placeholders directly in mcp.json
+- Replaces `access_token_template` placeholders directly in mcp.json
 - Refreshes tokens every hour when configured
 - Operates silently when not configured
 
 ### 3. Cursor Integration
 
 **Token Integration:**
-- The extension automatically replaces `tipalti_access_token_template` placeholders in your MCP configurations with actual UUID tokens
+- The extension automatically replaces `access_token_template` placeholders in your MCP configurations with actual UUID tokens
 - This happens automatically when switching environments and every hour
 - No manual token management required
 
@@ -156,9 +156,9 @@ After installation and first run:
 ~/.cursor/mcp-selector/           # MCP Selector Config directory
 ├── mcp-environments.props       # Environment definitions (in main directory)
 └── envs/                       # MCP server configurations subdirectory
-    ├── mcp-local.json          # Local environment config (can contain tipalti_access_token_template)
-    ├── mcp-qa.json             # QA environment config (can contain tipalti_access_token_template)
-    ├── mcp-prod.json           # Production environment config (can contain tipalti_access_token_template)
+    ├── mcp-local.json          # Local environment config (can contain access_token_template)
+    ├── mcp-qa.json             # QA environment config (can contain access_token_template)
+    ├── mcp-prod.json           # Production environment config (can contain access_token_template)
     ├── mcp-local-idp-url.txt   # Local auth endpoint (optional)
     ├── mcp-qa-idp-url.txt      # QA auth endpoint (optional)
     └── mcp-prod-idp-url.txt    # Prod auth endpoint (optional)
@@ -201,7 +201,7 @@ After installation and first run:
 - Switch environments to trigger token refresh
 
 **Authentication not working:**
-- Verify your MCP config files contain `tipalti_access_token_template` placeholders
+- Verify your MCP config files contain `access_token_template` placeholders
 - Check that `mcp.json` shows actual UUIDs instead of template strings
 - Tokens refresh every hour - wait up to 1 hour for automatic refresh
 - Switch environments to trigger immediate token replacement
@@ -241,7 +241,7 @@ After installation and first run:
 ### Integration with Other Extensions
 
 **Using Token Templates:**
-Include `tipalti_access_token_template` in your MCP server configurations where you need authentication tokens. The extension will automatically replace these with actual UUIDs.
+Include `access_token_template` in your MCP server configurations where you need authentication tokens. The extension will automatically replace these with actual UUIDs.
 
 Example MCP config with token template:
 ```json
@@ -251,7 +251,7 @@ Example MCP config with token template:
       "command": "node",
       "args": ["server.js"],
       "env": {
-        "ACCESS_TOKEN": "tipalti_access_token_template"
+        "ACCESS_TOKEN": "access_token_template"
       }
     }
   }
