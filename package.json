@@ -1,0 +1,70 @@
+{
+  "name": "mcp-server-selector",
+  "displayName": "MCP Server Selector",
+  "description": "Toggle between MCP Servers for different environments from the VS Code status bar.",
+  "version": "1.0.0",
+  "publisher": "innovation-labs",
+  "license": "MIT",
+  "icon": "icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/innovation-labs/mcp-server-selector.git"
+  },
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished",
+    "onCommand:mcp-server-selector.selectEnvironment",
+    "onCommand:mcp-server-selector.toggleEnvironment"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "mcp-server-selector.toggleEnvironment",
+        "title": "Toggle MCP Environment",
+        "category": "MCP"
+      },
+      {
+        "command": "mcp-server-selector.selectEnvironment",
+        "title": "Select MCP Environment",
+        "category": "MCP"
+      }
+    ],
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "mcp-server-selector.toggleEnvironment",
+          "when": "editorTextFocus"
+        },
+        {
+          "command": "mcp-server-selector.selectEnvironment",
+          "when": "editorTextFocus"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.74.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@typescript-eslint/eslint-plugin": "^8.31.1",
+    "@typescript-eslint/parser": "^8.31.1",
+    "eslint": "^9.25.1",
+    "typescript": "^5.8.3",
+    "@vscode/test-cli": "^0.0.11",
+    "@vscode/test-electron": "^2.5.2"
+  }
+}
