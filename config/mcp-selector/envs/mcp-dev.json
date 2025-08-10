@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+	"dev-server-mcp": {
+	  "type": "http",
+      "url": "https://innovation-mcp.dev.mcpservers-dev.com",
+	  "headers": {
+        "API_KEY": "access_token_template"
+      }
+    }
+  }
+} 

@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+   "prod-server-mcp": {
+      "type": "http",
+      "url": "https://innovation-mcp.production.mcpservers.com",
+	  "headers": {
+        "API_KEY": "access_token_template"
+      }
+   }
+  }
+ }
+
