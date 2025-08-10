@@ -11,7 +11,7 @@ It addresses both the **first-mile problem** of establishing transient user iden
 ### 🧩 Motivation
 Traditional systems rely on persistent credentials or shared tokens, which introduce security risks and lack traceability. Our approach ensures:
 * Short-lived, scoped tokens (1-hour TTL)
-* Tokens usable **only within Tipalti's VPC**
+* Tokens usable **only within Internal VPC**
 * Seamless support for **multiple IDPs**
 * Fine-grain authorization **per user, per tool**
 
@@ -90,7 +90,7 @@ sequenceDiagram
 
 | Aspect          | Description                                |
 | --------------- | ------------------------------------------ |
-| **Scope** | Token only valid within Tipalti’s secure VPC |
+| **Scope** | Token only valid within internal secure VPC |
 | **TTL** | 1 hour max validity                        |
 | **Leakage Impact**| No external usage possible                 |
 | **Traceability**| User actions are logged per tool use       |

@@ -140,7 +140,7 @@ export function getCurrentEnvironment(context: vscode.ExtensionContext): string 
 }
 
 /**
- * Replace tipalti_access_token_template with a new UUID by reading from source config
+ * Replace access_token_template with a new UUID by reading from source config
  * and ensuring the same UUID is used consistently
  */
 export function replaceTokenTemplateFromSource(context: vscode.ExtensionContext): { success: boolean; uuid?: string } {
@@ -159,14 +159,14 @@ export function replaceTokenTemplateFromSource(context: vscode.ExtensionContext)
     const sourceContent = fs.readFileSync(sourceFilePath, 'utf-8');
     
     // Check if the template string exists in source
-    if (!sourceContent.includes('tipalti_access_token_template')) {
-      console.log(`[MCP Server Selector] No tipalti_access_token_template found in source config for ${currentEnv}`);
+    if (!sourceContent.includes('access_token_template')) {
+      console.log(`[MCP Server Selector] No access_token_template found in source config for ${currentEnv}`);
       return { success: true }; // Not an error, just nothing to replace
     }
     
     // Generate new UUID and replace all occurrences
     const newUuid = generateUUID();
-    const updatedContent = sourceContent.replace(/tipalti_access_token_template/g, newUuid);
+    const updatedContent = sourceContent.replace(/access_token_template/g, newUuid);
     
     // Ensure target directory exists
     const targetDir = path.dirname(targetFilePath);
@@ -177,7 +177,7 @@ export function replaceTokenTemplateFromSource(context: vscode.ExtensionContext)
     // Write the updated content to mcp.json
     fs.writeFileSync(targetFilePath, updatedContent, 'utf-8');
     
-    console.log(`[MCP Server Selector] Replaced tipalti_access_token_template with new UUID: ${newUuid} for environment: ${currentEnv}`);
+    console.log(`[MCP Server Selector] Replaced access_token_template with new UUID: ${newUuid} for environment: ${currentEnv}`);
     return { success: true, uuid: newUuid };
   } catch (error) {
     console.error(`[MCP Server Selector] Failed to replace token template from source: ${error}`);
